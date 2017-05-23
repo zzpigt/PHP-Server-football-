@@ -1,0 +1,9 @@
+{"userlevel":
+	[
+		{
+			"level":1,
+			"exp":1000,
+			"leader":30
+		},
+	]
+}

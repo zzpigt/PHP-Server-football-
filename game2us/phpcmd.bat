@@ -1,0 +1,3 @@
+php phpcmd.php
+
+pause

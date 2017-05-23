@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coder name="proto" version="1">
+  <errors>
+    <error name="ERROR_OK" 						value="0" desc="成功"/>
+    <error name="ERROR_LOGIN" 					value="1" desc="登录失败"/>
+    <error name="ERROR_CREATE" 					value="2" desc="创建失败"/>
+    <error name="ERROR_NEED_LOGIN" 				value="3" desc="需要登录"/>
+    <error name="ERROR_NEED_CREATE" 			value="4" desc="需要创建"/>
+    <error name="ERROR_REPEAT_NAME" 			value="5" desc="重名"/>
+    <error name="ERROR_NAME_LENGTH" 			value="6" desc="超出长度"/>
+    <error name="ERROR_ONLINE" 					value="7" desc="账号已在线"/>
+    <error name="ERROR_REGISTER" 				value="8" desc="注册失败"/>
+    <error name="ERROR_USERNAME_REGISTERED" 	value="9" desc="用户名已存在"/>
+    <error name="ERROR_USER_NAME_LENGTH" 		value="10" desc="用户名超出长度"/>
+    <error name="ERROR_USER_PWD_LENGTH" 		value="11" desc="密码超出长度"/>
+    <error name="ERROR_NAME_HAVED" 				value="12" desc="昵称已存在"/>
+
+
+    <error name="ERROR_NOT_FIND_CARD" 			value="30" desc="没有发现卡牌"/>
+    <error name="ERROR_NOT_HAVE_CARD" 			value="31" desc="您没有这张卡牌"/>
+    <error name="ERROR_FORMATION_CHANGE" 		value="32" desc="替换失败"/>
+    <error name="ERROR_FORMATION_NOTFIND" 		value="33" desc="阵型不存在"/>
+    <error name="ERROR_USER_LEVEL_FULL" 		value="34" desc="玩家已到达最高等级"/>
+    <error name="ERROR_NOT_FIND_COUNTRY" 		value="35" desc="国家不存在"/>
+    <error name="ERROR_UPGRADE_LEVEL_EXPZROE" 	value="36" desc="升级出错(经验为0)"/>
+    <error name="ERROR_CARD_FULL_LEVEL" 		value="37" desc="卡牌到达最高等级"/>
+    <error name="ERROR_CARD_FULL_STAR" 			value="38" desc="卡牌到达最高星级"/>
+    <error name="ERROR_UPGRADE_STAR_MONEYZROE" 	value="39" desc="升星出错(消耗为0)"/>
+    <error name="ERROR_UPGRADE_STAR_MATERIAL" 	value="40" desc="升星出错(材料不足)"/>
+    <error name="ERROR_MATERIAL_NOTFIND" 		value="41" desc="材料不存在"/>
+    <error name="ERROR_FRAGMENT_NOTFIND" 		value="42" desc="碎片不存在"/>
+    <error name="ERROR_EQUIP_NOTFIND" 			value="43" desc="装备不存在"/>
+    <error name="ERROR_LOOT_LOGIN_REWARD" 		value="44" desc="每日登陆奖励拾取失败"/>
+    <error name="ERROR_LOOTED_LOGIN_REWARD" 	value="45" desc="今天已领取过了"/>
+    <error name="ERROR_ACTIVE_MAP_TIME" 		value="46" desc="活动地图未开启"/>
+    <error name="ERROR_OPEN_MAP" 				value="47" desc="大地图为开启"/>
+    <error name="ERROR_OPEN_CHILD_MAP" 			value="48" desc="小地图为开启"/>
+    <error name="ERROR_POWER_NOT_ENOUGH" 		value="49" desc="体力不足"/>
+    <error name="ERROR_CHILD_MAP_LIMIT_USED" 	value="50" desc="今日挑战次数已用完"/>
+    <error name="ERROR_FIGHT"				 	value="51" desc="战斗失败"/>
+    <error name="ERROR_CARDS_COUNT_LIMIT"		value="52" desc="卡牌数量超过上限"/>
+    <error name="ERROR_EQUIPS_COUNT_LIMIT"		value="53" desc="装备数量超过上限"/>
+    <error name="ERROR_NOT_HAVE_EQUIP"			value="54" desc="您没有这个装备"/>
+    <error name="ERROR_EQUIP_FULL_LEVEL" 		value="55" desc="装备到达最高等级"/>
+    <error name="ERROR_FREE_SUMMON" 			value="56" desc="免费召唤失败"/>
+    <error name="ERROR_FV_NUMBER"	 			value="57" desc="友情点不足"/>
+    <error name="ERROR_MONEY_NUMBER"	 		value="58" desc="金币不足"/>
+    <error name="ERROR_RMB_NUMBER"	 			value="59" desc="钻石不足"/>
+    <error name="ERROR_CARD_WORK"	 			value="60" desc="卡牌出战中"/>
+
+    <error name="ERROR_PVP_SELF_FIGHT"          value="100" decsc="您已经在战斗中"/>
+    <error name="ERROR_PVP_ENEMY_FIGHT"         value="101" decsc="对方在战斗中"/>
+    <error name="ERROR_PVP_NO_USER"             value="102" decsc="该玩家不存在"/>
+
+    <error name="ERROR_FRIEND_SELF"	 			value="200" desc="不能添加自己为好友"/>
+	<error name="ERROR_FRIEND_HAD"	 			value="201" desc="好友已存在"/>
+	<error name="ERROR_FRIEND_NOHAVE"	 		value="202" desc="好友不存在"/>
+	
+	
+    <error name="ERROR_NOT_FIND_TYPE" 			value="1000" desc="系统错误"/>
+    <error name="ERROR_SERVER" 					value="1001" desc="系统错误"/>
+    <error name="ERROR_LEVEL_NOT_UP" 			value="1002" desc="系统错误"/>
+  </errors>
+
+  <defines>
+    <!--玩家第一属性-->
+    <define name="USER_DATA_FIRST_NONE"			value="0"/>
+    <define name="USER_DATA_FIRST_PROPERTY"		value="1"/><!--属性-->
+    <define name="USER_DATA_FIRST_CARDS"		value="2"/><!--卡牌背包-->
+    <define name="USER_DATA_FIRST_EQUIPS"		value="3"/><!--装备背包-->
+    <define name="USER_DATA_FIRST_MATERIALS"	value="4"/><!--材料背包-->
+    <define name="USER_DATA_FIRST_FRAGMENTS"	value="5"/><!--碎片背包-->
+    <define name="USER_DATA_FIRST_FORMATION"	value="6"/><!--阵型-->
+    <define name="USER_DATA_FIRST_LIMIT"		value="7"/><!--限制-->
+    <define name="USER_DATA_FIRST_MAPS"			value="8"/><!--地图信息-->
+    <define name="USER_DATA_FIRST_CREATETIME"	value="9"/>
+    <define name="USER_DATA_FIRST_LASTLOGIN"	value="10"/>
+    <define name="USER_DATA_FIRST_LASTLEAVE"	value="11"/>
+
+    <!--卡牌第二属性-->
+    <!--<define name="USER_DATA_CARDS_NONE"         value="0"/>-->
+    <define name="USER_DATA_CARDS_UID"          value="0"/><!--Uid-->
+    <define name="USER_DATA_CARDS_CID"          value="1"/><!--Cid-->
+    <define name="USER_DATA_CARDS_USERID"       value="2"/><!--UserId-->
+    <define name="USER_DATA_CARDS_ATTACK"       value="3"/><!--进攻-->
+    <define name="USER_DATA_CARDS_TECHNOLOGY"   value="4"/><!--技术-->
+    <define name="USER_DATA_CARDS_BODY"         value="5"/><!--身体-->
+    <define name="USER_DATA_CARDS_HEART"        value="6"/><!--心理-->
+    <define name="USER_DATA_CARDS_DEFENSE"      value="7"/><!--防守-->
+    <define name="USER_DATA_CARDS_PORTER"       value="8"/><!--守门-->
+    <define name="USER_DATA_CARDS_SHOT"         value="9"/><!--射术-->
+    <define name="USER_DATA_CARDS_PASS"         value="10"/><!--传中-->
+    <define name="USER_DATA_CARDS_HEADER"       value="11"/><!--头球-->
+    <define name="USER_DATA_CARDS_LONGSHOT"     value="12"/><!--远射-->
+    <define name="USER_DATA_CARDS_FREEBALL"     value="13"/><!--任意球精度-->
+    <define name="USER_DATA_CARDS_DRIBBLE"      value="14"/><!--盘带-->
+    <define name="USER_DATA_CARDS_LONGPASS"     value="15"/><!--长传-->
+    <define name="USER_DATA_CARDS_BALLCONTROL"  value="16"/><!--控球-->
+    <define name="USER_DATA_CARDS_ARC"          value="17"/><!--弧线-->
+    <define name="USER_DATA_CARDS_SHOTPASS"     value="18"/><!--短传-->
+    <define name="USER_DATA_CARDS_POWER"        value="19"/><!--力量-->
+    <define name="USER_DATA_CARDS_STAMINA"      value="20"/><!--体能-->
+    <define name="USER_DATA_CARDS_STRONG"       value="21"/><!--强壮-->
+    <define name="USER_DATA_CARDS_REACTION"     value="22"/><!--反应-->
+    <define name="USER_DATA_CARDS_SPEED"        value="23"/><!--速度-->
+    <define name="USER_DATA_CARDS_AGGRESSIVE"   value="24"/><!--侵略性-->
+    <define name="USER_DATA_CARDS_POSTMOVE"     value="25"/><!--跑位-->
+    <define name="USER_DATA_CARDS_VISION"       value="26"/><!--视野-->
+    <define name="USER_DATA_CARDS_CALM"         value="27"/><!--冷静-->
+    <define name="USER_DATA_CARDS_PENALTY"      value="28"/><!--点球-->
+    <define name="USER_DATA_CARDS_MARKMAN"      value="29"/><!--盯人-->
+    <define name="USER_DATA_CARDS_STEALS"       value="30"/><!--抢断-->
+    <define name="USER_DATA_CARDS_TACKLEBALL"   value="31"/><!--铲球-->
+    <define name="USER_DATA_CARDS_INTERCEPTION" value="32"/><!--拦截-->
+    <define name="USER_DATA_CARDS_STATION"      value="33"/><!--站位-->
+    <define name="USER_DATA_CARDS_DIVING"       value="34"/><!--鱼跃-->
+    <define name="USER_DATA_CARDS_HANDTYPE"     value="35"/><!--手形-->
+    <define name="USER_DATA_CARDS_KICKOFF"      value="36"/><!--开球-->
+    <define name="USER_DATA_CARDS_COUNTRY"      value="37"/><!--国籍-->
+    <define name="USER_DATA_CARDS_NAME"         value="38"/><!--姓名-->
+    <define name="USER_DATA_CARDS_HEIGHT"       value="39"/><!--身高-->
+    <define name="USER_DATA_CARDS_GOODPOSITION" value="40"/><!--擅长位置-->
+    <define name="USER_DATA_CARDS_WEIGHT"       value="41"/><!--体重-->
+    <define name="USER_DATA_CARDS_GOODFEET"     value="42"/><!--擅长脚-->
+    <define name="USER_DATA_CARDS_AGE"          value="43"/><!--年龄-->
+    <define name="USER_DATA_CARDS_RETIREAGE"    value="44"/><!--退役年龄-->
+    <define name="USER_DATA_CARDS_TEAM"         value="45"/><!--当前球队-->
+    <define name="USER_DATA_CARDS_WORTH"        value="46"/><!--身价-->
+    <define name="USER_DATA_CARDS_SALARY"       value="47"/><!--薪资-->
+    <define name="USER_DATA_CARDS_NUMBER"       value="48"/><!--号码-->
+    <define name="USER_DATA_CARDS_CONTRACTTIME" value="49"/><!--合约剩余时间-->
+
+    <!-- 装备第二属性 -->
+    <define name="USER_DATA_EQUIPS_UID"			value="1"/><!--Uid-->
+    <define name="USER_DATA_EQUIPS_ID"    		value="2"/><!--静态id-->
+    <define name="USER_DATA_EQUIPS_LEVEL"    	value="3"/><!--等级-->
+    <define name="USER_DATA_EQUIPS_EXP"    		value="4"/><!--经验-->
+    <define name="USER_DATA_EQUIPS_CARDUID"		value="5"/><!--被谁佩戴了-->
+
+    <!-- 碎片第二属性 -->
+    <define name="USER_DATA_FRAGMENTS_ID"    		value="1"/><!--静态id就是卡牌的静态id-->
+    <define name="USER_DATA_FRAGMENTS_NUMBER"		value="2"/><!-- 数量 -->
+
+    <!-- 材料第二属性 -->
+    <define name="USER_DATA_MATERIALS_ID"    		value="1"/><!--静态id-->
+    <define name="USER_DATA_MATERIALS_NUMBER"		value="2"/><!-- 数量 -->
+
+    <!--玩家第二属性-->
+    <define name="DATA_BASE_PROPERTIES_UID" 		value="0"/><!--玩家id-->
+    <define name="DATA_BASE_PROPERTIES_NICK" 	value="1"/><!--名称-->
+    <define name="DATA_BASE_PROPERTIES_MONEY" 	value="2"/><!--现金-->
+    <define name="DATA_BASE_PROPERTIES_DIAMOND" value="3"/><!--钻石-->
+    <define name="DATA_BASE_PROPERTIES_POWERBAG" value="4"/><!--体力包-->
+    <define name="DATA_BASE_PROPERTIES_MEDICALBAG" 	value="5"/><!--游戏内货币-->
+    <define name="DATA_BASE_PROPERTIES_MEDICALBAG" 	value="6"/><!--医疗包-->
+    <define name="DATA_BASE_PROPERTIES_MORALEBAG" 	value="7"/><!--士气包-->
+    <define name="DATA_BASE_PROPERTIES_SKILLBAG"	value="8"/><!--技能包-->
+    <define name="DATA_BASE_PROPERTIES_PVPROOMID"	value="9"/><!--战斗房间标记-->
+    <define name="DATA_BASE_PROPERTIES_RECOMMENDENDTIME"	value="10"/><!--推荐结束时间-->
+    <define name="DATA_BASE_PROPERTIES_RECOMMENDSTARTTIME"	value="11"/><!--推荐开始时间-->
+    <define name="DATA_BASE_PROPERTIES_RECOMMENDLASTTIME" value="12"/><!--上一次推荐时间-->
+
+
+    <!--球员上阵位置信息第二属性-->
+    <define name="USER_DATA_FORMATION_FORWARD"		value="1"/><!--前锋-->
+    <define name="USER_DATA_FORMATION_CENTERFORWARD" value="2"/><!--中锋-->
+    <define name="USER_DATA_FORMATION_GUARD"		value="3"/><!--后卫-->
+    <define name="USER_DATA_FORMATION_GOALKEEPER"	value="4"/><!--守门员-->
+    <define name="USER_DATA_FORMATION_ALTERNATIVE"	value="5"/><!--替补-->
+
+    <!--各种限制条件第二属性-->
+    <define name="USER_DATA_LIMIT_LOGINREWARDID"		value="1"/><!-- 每日奖励id -->
+    <define name="USER_DATA_LIMIT_LOGINREWARDDAY"		value="2"/><!-- 每日奖励第几天 -->
+    <define name="USER_DATA_LIMIT_LOGINREWARDLOOT"		value="3"/><!-- 每日奖励是否可以领取 -->
+
+    <!-- 装备相关 -->
+    <define name="EQUIP_TYPE_POSITION"					value="1"/><!-- 装备类型(位置) -->
+    <define name="EQUIP_TYPE_CLOTH"						value="2"/><!-- 装备类型(球衣) -->
+    <define name="EQUIP_TYPE_COUNTRY"					value="3"/><!-- 装备类型(国家) -->
+    <define name="EQUIP_TYPE_CLUB"						value="4"/><!-- 装备类型(球会) -->
+
+    <!-- 地图相关 -->
+    <define name="MAP_TYPE_COMMON"						value="1"/><!-- 大地图类型(普通的) -->
+    <define name="MAP_TYPE_ELITE"						value="2"/><!-- 大地图类型(精英的) -->
+    <define name="MAP_TYPE_ACTIVE"						value="3"/><!-- 大地图类型(活动的) -->
+
+    <define name="CHILD_MAP_TYPE_COMMON"				value="1"/><!-- 小地图类型(普通的) -->
+    <define name="CHILD_MAP_TYPE_LIMITNUMBER"			value="2"/><!-- 小地图类型(限定次数的) -->
+
+    <!-- 服务器的ntf -->
+    <define name="SERVER_OPERATION_NTF_PROPERTY_CHANGE"	value="1"/><!-- 属性信息更改 -->
+    <define name="SERVER_OPERATION_NTF_CARD_CHANGE"		value="2"/><!-- 卡牌信息更改 -->
+    <define name="SERVER_OPERATION_NTF_CARD_DELETE"		value="3"/><!-- 卡牌删除 -->
+    <define name="SERVER_OPERATION_NTF_CARD_ADD"		value="4"/><!-- 卡牌增加 -->
+    <define name="SERVER_OPERATION_NTF_EQUIP_ADD"		value="5"/><!-- 装备增加 -->
+    <define name="SERVER_OPERATION_NTF_EQUIP_DELETE"	value="6"/><!-- 装备删除 -->
+    <define name="SERVER_OPERATION_NTF_EQUIP_CHANGE"	value="7"/><!-- 装备改变 -->
+    <define name="SERVER_OPERATION_NTF_FRAGMENT_OPER"	value="8"/><!-- 碎片操作 -->
+    <define name="SERVER_OPERATION_NTF_MATERIAL_OPER"	value="9"/><!-- 材料操作 -->
+    <define name="SERVER_OPERATION_NTF_FORMATION_OPER"	value="10"/><!-- 阵型变化 -->
+
+    <define name="SERVER_OPERATION_NTF_DIRTYTIMES"		value="20"/><!-- 脏数据时间 -->>
+
+    <define name="SUMMON_TYPE_FV" 						value="1"/><!-- 友情点召唤 -->
+    <define name="SUMMON_TYPE_MONEY" 					value="2"/><!-- 金币召唤 -->
+    <define name="SUMMON_TYPE_RMB" 						value="3"/><!-- 钻石召唤 -->
+    <define name="SUMMON_TYPE_RMBTEN" 					value="4"/><!-- 钻石十连召唤 -->
+
+    <define name="CARD_QUALITY_TYPE_WHITE"				value="1"/><!-- 白色品质 -->
+    <define name="CARD_QUALITY_TYPE_GREEN"				value="2"/><!-- 绿色品质 -->
+    <define name="CARD_QUALITY_TYPE_BLUE"				value="3"/><!-- 蓝色品质 -->
+    <define name="CARD_QUALITY_TYPE_PURPLE"				value="4"/><!-- 紫色品质 -->
+    <define name="CARD_QUALITY_TYPE_ORANGE"				value="5"/><!-- 橙色品质 -->
+    <define name="CARD_QUALITY_TYPE_RED"				value="6"/><!-- 红色品质 -->
+
+    <define name="PVP_POSITION_NONE"					value="0"/>
+    <define name="PVP_POSITION_ATTACK"					value="1"/><!-- 进攻方 -->
+    <define name="PVP_POSITION_DEFENSE"					value="2"/><!-- 防守方 -->
+
+    <define name="MYSQL_MAX_NUM"					    value="2000000"/>
+    <define name="MEM_MAX_NUM"					        value="200000"/>
+    <define name="ID_LIST_MAX_NUM"  					value="2000"/>
+
+  </defines>
+
+  <types>
+    <type name="CS_LOGIN_REQ">
+      <item name="UserName" type="string"/>
+      <item name="UserPwd" type="string"/>
+    </type>
+    <type name="SC_LOGIN_ACK">
+      <item name="Token" type="string"/>
+    </type>
+
+    <type name="CS_REGISTER_REQ">
+      <item name="UserName" type="string"/>
+      <!-- 用户名 -->
+      <item name="UserPwd" type="string"/>
+      <!-- 密码 -->
+      <item name="MacAddress" type="string"/>
+      <!-- mac地址 -->
+    </type>
+
+    <type name="SC_REGISTER_ACK">
+      <item name="Token" type="string"/>
+    </type>
+
+    <type name="CS_CREATE_REQ">
+      <!-- 创建协议(客户端请求)在login后得到 ERROR_NEED_CREATE时才发此协议 -->
+      <item name="Name" type="string"/>
+      <!-- 昵称 -->
+      <item name="CountryId" type="int"/>
+      <!-- 国家id -->
+      <item name="CaptainId" type="int"/>
+      <!-- 队长id -->
+    </type>
+    <type name="SC_CREATE_ACK">
+
+    </type>
+
+    <type name="SDrop">
+      <item name="Id" type="int"/>
+      <item name="Param1" type="int"/>
+      <item name="Param2" type="int"/>
+      <item name="Param3" type="int"/>
+    </type>
+
+    <!-- 玩家属性信息 -->
+    <type name="SInfo">
+      <!-- Key Value结构 -->
+      <item name="Type" type="int"/>
+      <item name="Value" type="int"/>
+    </type>
+
+    <type name="SProperties">
+      <!-- 玩家属性 -->
+      <item name="Name" type="string" />
+      <!-- 名字 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 USER_DATA_PROPERTY_LEVEL 等-->
+    </type>
+
+    <type name="SCardInfos">
+      <!-- 某个卡牌信息 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 USER_DATA_CARDS_UID 等-->
+    </type>
+
+    <type name="SCardBag">
+      <!-- 卡牌背包 -->
+      <item name="CardArr" type="SCardInfos" isArray="1"/>
+    </type>
+
+    <type name="SPositionInfo">
+      <!-- 阵型中的位置信息 -->
+      <item name="Position" type="int" />
+      <item name="CardUidsArr" type="int" isArray="1"/>
+    </type>
+
+    <type name="SFormation">
+      <!-- 阵型信息 -->
+      <item name="PositionInfoArr" type="SPositionInfo" isArray="1"/>
+    </type>
+
+    <type name="SEquipInfos">
+      <!-- 某个装备信息 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 USER_DATA_EQUIPS_UID 等-->
+    </type>
+
+    <type name="SEquipBag">
+      <!-- 装备背包信息 -->
+      <item name="EquipArr" type="SEquipInfos" isArray="1"/>
+    </type>
+
+    <type name="SFragmentInfos">
+      <!-- 某个碎片信息 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 碎片id -->
+    </type>
+
+    <type name="SFragmentBag">
+      <!-- 碎片背包信息 -->
+      <item name="FragmentArr" type="SFragmentInfos" isArray="1"/>
+    </type>
+
+    <type name="SMaterialInfos">
+      <!-- 某个材料信息 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 材料id-->
+    </type>
+
+    <type name="SMaterialBag">
+      <!-- 材料背包信息 -->
+      <item name="MaterialArr" type="SMaterialInfos" isArray="1"/>
+    </type>
+
+    <type name="SLimit">
+      <!-- 每日登陆奖励信息 -->
+      <item name="LoginRewardId" type="int"/>
+      <!-- -->
+      <item name="LoginRewardDay" type="int"/>
+      <item name="LoginRewardLooted" type="int"/>
+    </type>
+
+    <type name="SChildMapInfo">
+      <!-- 某个子地图信息 -->
+      <item name="ChildMapId" type="int"/>
+      <item name="State" type="int"/>
+    </type>
+
+    <type name="SMapInfo">
+      <!-- 某个大地图信息 -->
+      <item name="MapId" type="int"/>
+      <item name="ChildMapArr" type="SChildMapInfo" isArray="1"/>
+    </type>
+
+    <type name="SMap">
+      <!-- 某种类型地图信息 -->
+      <item name="MapType" type="int"/>
+      <item name="MapArr" type="SMapInfo" isArray="1"/>
+    </type>
+
+    <type name="SMapGather">
+      <!-- 所有地图信息 -->
+      <item name="MapGahterArr" type="SMap" isArray="1"/>
+    </type>
+
+    <type name="SUserInfo" class="union">
+      <item name="Property" type="SProperties" id="USER_DATA_FIRST_PROPERTY"/>
+      <!-- 属性信息 -->
+      <item name="CardBag" type="SCardBag" id="USER_DATA_FIRST_CARDS"/>
+      <!-- 卡牌背包信息 -->
+      <item name="Formation" type="SFormation" id="USER_DATA_FIRST_FORMATION"/>
+      <!-- 阵型信息 -->
+      <item name="EquipBag" type="SEquipBag" id="USER_DATA_FIRST_EQUIPS"/>
+      <!-- 装备背包信息 -->
+      <item name="Limit" type="SLimit" id="USER_DATA_FIRST_LIMIT"/>
+      <!-- 每日登陆拾取信息 -->
+      <item name="FragmentBag" type="SFragmentBag" id="USER_DATA_FIRST_FRAGMENTS"/>
+      <!-- 碎片信息 -->
+      <item name="MaterialBag" type="SMaterialBag" id="USER_DATA_FIRST_MATERIALS"/>
+      <!-- 材料信息 -->
+      <item name="Maps" type="SMapGather" id="USER_DATA_FIRST_MAPS"/>
+      <!-- 地图信息 -->
+    </type>
+
+    <type name="CS_GETINFO_REQ">
+      <!-- 获得玩家信息(用于客户端请求) -->
+      <item name="InfoType" type="int"/>
+      <!-- 对应大的类型 宏定义 (如获取玩家属性 InfoType = USER_DATA_FIRST_PROPERTY)-->
+    </type>
+    <type name="SC_GETINFO_ACK">
+      <!-- 获得玩家信息(用于服务端返回) -->
+      <item name="InfoType" type="int"/>
+      <!-- 对应大的类型 宏定义 (如玩家属性信息 InfoType = USER_DATA_FIRST_PROPERTY)-->
+      <item name="Info" type="SUserInfo" select="InfoType"/>
+      <!-- 数据联合体 -->
+    </type>
+
+    <!-- 获得信息的结束 -->
+    <type name="SPropertyChangeNtf">
+      <!-- 属性信息发生变化 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 USER_DATA_PROPERTY_LEVEL 等 -->
+    </type>
+
+    <type name="SCardChangeNtf">
+      <!-- 卡牌信息发生变化 -->
+      <item name="CardUid" type="int"/>
+      <!-- 卡牌uid -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 卡牌属性变化数组 -->
+    </type>
+
+    <type name="SCardDelNtf">
+      <!-- 卡牌删除 -->
+      <item name="CardUidsArr" type="int" isArray="1"/>
+      <!-- 删除的卡牌uid数组 -->
+    </type>
+
+    <type name="SCardAddNtf">
+      <!-- 卡牌增加 -->
+      <item name="NewCard" type="SCardInfos" isArray="1"/>
+      <!-- 增加的卡牌数组 -->
+    </type>
+
+    <type name="SEquipAddNtf">
+      <!-- 装备增加 -->
+      <item name="NewEquip" type="SEquipInfos" isArray="1"/>
+      <!-- 增加的装备数组 -->
+    </type>
+
+    <type name="SEquipDelNtf">
+      <!-- 装备删除 -->
+      <item name="EquipUidsArr" type="int" isArray="1"/>
+      <!-- 删除的装备uid数组 -->
+    </type>
+
+    <type name="SEquipChangeNtf">
+      <item name="EquipUid" type="int"/>
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+    </type>
+
+    <type name="SFragmentOperNtf">
+      <item name="Fragment" type="SFragmentInfos" isArray="1"/>
+    </type>
+
+    <type name="SMaterialOperNtf">
+      <item name="Material" type="SMaterialInfos" isArray="1"/>
+    </type>
+
+    <type name="SDirtyTimeNtf">
+      <item name="DirtyTime" type="SInfo" isArray="1"/>
+    </type>
+
+    <type name="SOperationNtf" class="union">
+      <item name="PropertyChangeNtf" type="SPropertyChangeNtf" id="SERVER_OPERATION_NTF_PROPERTY_CHANGE"/>
+      <item name="CardChangeNtf" type="SCardChangeNtf" id="SERVER_OPERATION_NTF_CARD_CHANGE"/>
+      <item name="CardDelNtf" type="SCardDelNtf" id="SERVER_OPERATION_NTF_CARD_DELETE"/>
+      <item name="CardAddNtf" type="SCardAddNtf" id="SERVER_OPERATION_NTF_CARD_ADD"/>
+      <item name="EquipAddNtf" type="SEquipAddNtf" id="SERVER_OPERATION_NTF_EQUIP_ADD"/>
+      <item name="EquipDelNtf" type="SEquipDelNtf" id="SERVER_OPERATION_NTF_EQUIP_DELETE"/>
+      <item name="EquipChangeNtf" type="SEquipChangeNtf" id="SERVER_OPERATION_NTF_EQUIP_CHANGE"/>
+      <item name="FragmentOperNtf" type="SFragmentOperNtf" id="SERVER_OPERATION_NTF_FRAGMENT_OPER"/>
+      <item name="MaterialOperNtf" type="SMaterialOperNtf" id="SERVER_OPERATION_NTF_MATERIAL_OPER"/>
+      <item name="FormationChangeNtf" type="SFormation" id="SERVER_OPERATION_NTF_FORMATION_OPER"/>
+      <item name="DirtyTimeNtf" type="SDirtyTimeNtf" id="SERVER_OPERATION_NTF_DIRTYTIMES"/>
+    </type>
+
+    <type name="SLogicOperationNtf">
+      <item name="NtfType" type="int"/>
+      <item name="Operation" type="SOperationNtf" select="NtfType"/>
+    </type>
+
+    <type name="CS_GETDIRTYTIME_REQ">
+
+    </type>
+
+    <type name="SC_GETDIRTYTIME_ACK">
+      <item name="DirtyTime" type="SInfo" isArray="1"/>
+    </type>
+
+    <type name="CS_UPGRADELEVEL_REQ">
+      <item name="CardMainUid" type="int"/>
+      <item name="CardUidsArr" type="int" isArray="1"/>
+    </type>
+
+    <type name="SC_UPGRADELEVEL_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_UPGRADESTAR_REQ">
+      <item name="CardMainUid" type="int"/>
+    </type>
+
+    <type name="SC_UPGRADESTAR_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_LOOTLOGINREWARD_REQ">
+
+    </type>
+
+    <type name="SC_LOOTLOGINREWARD_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_PVE_REQ">
+      <item name="MapId" type="int" />
+      <item name="ChildMapId" type="int" />
+    </type>
+
+    <type name="SPVEShotSuc">
+      <item name="ShotCardUid" type="int"/>
+      <item name="DefCardUid" type="int"/>
+    </type>
+
+    <type name="SPVEShotFail">
+      <item name="ShotCardUid" type="int"/>
+      <item name="DefCardUid" type="int"/>
+    </type>
+
+    <type name="SPVEResult">
+      <item name="ShotSuc" type="SPVEShotSuc" isArray="1"/>
+      <item name="ShotFail" type="SPVEShotFail" isArray="1"/>
+    </type>
+
+    <type name="SC_PVE_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+      <item name="NPCCardBag" type="SCardBag"/>
+      <item name="MyResult" type="SPVEResult"/>
+      <item name="NPCResult" type="SPVEResult"/>
+      <item name="Drop" type="SDrop" isArray="1"/>
+    </type>
+
+    <type name="CS_TESTPVE_REQ">
+
+    </type>
+
+    <type name="SC_TESTPVE_ACK">
+      <item name="NPC1CardBag" type="SCardBag"/>
+      <item name="NPC2CardBag" type="SCardBag"/>
+      <item name="NPC1Result" type="SPVEResult"/>
+      <item name="NPC2Result" type="SPVEResult"/>
+    </type>
+
+    <type name="CS_SELLCARDS_REQ">
+      <item name="CardUidsArr" type="int" isArray="1"/>
+    </type>
+
+    <type name="SC_SELLCARDS_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_POSITIONCHANGE_REQ">
+      <item name="SrcCardUid" type="int"/>
+      <item name="DesCardUid" type="int"/>
+    </type>
+
+    <type name="SC_POSITIONCHANGE_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_UPGRADEEQUIPLEVEL_REQ">
+      <item name="EquipMainUid" type="int"/>
+      <item name="EquipUidsArr" type="int" isArray="1"/>
+    </type>
+
+    <type name="SC_UPGRADEEQUIPLEVEL_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_EQUIPWORD_REQ">
+      <item name="CardUid" type="int"/>
+      <item name="EquipUid" type="int"/>
+      <item name="EquipType" type="int"/>
+    </type>
+
+    <type name="SC_EQUIPWORD_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_EQUIPREST_REQ">
+      <item name="EquipUid" type="int"/>
+    </type>
+
+    <type name="SC_EQUIPREST_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_SELLEQUIPS_REQ">
+      <item name="EquipUidsArr" type="int" isArray="1"/>
+    </type>
+
+    <type name="SC_SELLEQUIPS_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+    </type>
+
+    <type name="CS_SUMMON_REQ">
+      <item name="SummonType"	type="int"/>
+    </type>
+
+    <type name="SC_SUMMON_ACK">
+      <item name="OperationNtfArr" type="SLogicOperationNtf" isArray="1"/>
+      <item name="Drop" type="SDrop" isArray="1"/>
+    </type>
+
+    <type name="SC_USER_DATA_NTF">
+      <item name="__test" type="int"/>
+    </type>
+
+    <type name="CS_HeartBeat_REQ">
+        <!-- <!-- 心跳包 --> 
+    </type>
+    <type name="CS_APPLYGAME_REQ">
+	  <!-- 请求比赛 -->
+      <item name="DefenseId" type="int"/>
+
+    </type>
+    <type name="SPVPEvent">
+	  <!-- 比赛事件 -->
+      <item name="EventPoint" type="int"/>
+      <item name="EventID" type="int"/>
+    </type>
+    
+    <type name="SPVPEventClass">
+	  <!-- 比赛事件类 -->
+      <item name="Classes" type="int"/>
+      <item name="ApplyPVPEvent" type="SPVPEvent" isArray="1"/>
+    </type>
+    
+    <type name="SC_APPLYGAME_ACK">
+	  <!-- 比赛事件返回 -->
+      <item name="Score" type="string"/>
+      <item name="ApplyEventClass" type="SPVPEventClass" isArray="1"/>
+    </type>
+
+	<type name="CS_FootballerInfo_REQ">
+	  <!-- 请求球员信息 -->
+	
+    </type>
+	<type name="SC_FootballerInfo_ACK">
+	  <!-- 请求球员信息返回 -->
+	  <item name="CardArr" type="SCardInfos" isArray="1"/>
+      <!-- 卡牌背包信息 -->
+    </type>
+	
+	 <type name="CS_FootballerADD_REQ">
+	  <!-- 添加球员 -->
+		<item name="FootballerID" type="int"/>
+    </type>
+	
+	<type name="SC_FootballerADD_ACK">
+	  <!-- 添加球员返回 -->
+		<item name="InfoArr" type="SInfo" isArray="1"/>
+    </type>
+	 <type name="CS_FootballerDestory_REQ">
+	  <!-- 删除球员 -->
+		<item name="FootballerID" type="int"/>
+    </type>
+	
+	<type name="SC_FootballerDestory_ACK">
+	  <!-- 删除球员返回 0失败 1 成功 -->
+		<item name="IsScuess" type="int"/>
+    </type>
+	
+	
+	<type name="CS_Property_REQ">
+	  <!-- 主界面请求 -->
+	
+    </type>
+	<type name="SC_Property_ACK">
+	  <!-- 玩家属性 -->
+      <item name="Name" type="string" />
+      <!-- 名字 -->
+      <item name="InfoArr" type="SInfo" isArray="1"/>
+      <!-- 属性数组 key 为 USER_DATA_PROPERTY_LEVEL 等-->
+    </type>
+	
+	<type name="ChatInfo">
+	  <!-- ChatInfo单个信息 -->
+	  <item name="UserName" type="string"/>
+	  <item name="ChatMessage" type="string"/>
+    </type>
+	
+	<type name="CS_Chat_REQ">
+	  <!-- 打开Chat界面 -->
+	 <item name="UserID" type="int" />
+    </type>
+	<type name="SC_Chat_ACK">
+	  <!-- 打开Chat界面返回 -->
+	<item name="ChatArr" type="ChatInfo" isArray="1"/>
+    </type>
+	
+	<type name="CS_ChatSetInfo_REQ">
+	  <!-- 发送聊天信息 -->
+	  <item name="UserID" type="int" />
+	  <item name="Message" type="string" />
+    </type>
+	<type name="SC_ChatSetInfo_ACK">
+	  <!-- 聊天信息返回 0失败 1成功-->
+	  <item name="isSuccess" type="int" />
+    </type>
+	
+	
+	<type name="FriendInfo">
+	  <!-- 好友单个信息-->
+		<item name="Name" type="string" />
+		<item name="UserID" type="string" />
+		<item name="Club" type="string" />
+    </type>
+	
+	<type name="CS_Friend_REQ">
+	  <!-- 好友信息-->
+
+    </type>
+	
+	<type name="SC_Friend_ACK">
+	  <!-- 好友返回上限100-->
+	  <item name="FriendArr" type="FriendInfo" isArray="1"/>
+    </type>
+	
+	<type name="CS_FriendADD_REQ">
+	  <!-- 添加好友-->
+	  <item name="FriendID" type="int" />
+    </type>
+	
+	<type name="SC_FriendADD_ACK">
+	  <!-- 添加好友是否成功-->
+	  	<item name="Name" type="string" />
+		<item name="UserID" type="string" />
+		<item name="Club" type="string" />
+    </type>
+	
+	
+	<type name="CS_FriendDestory_REQ">
+	  <!-- 删除好友-->
+	  <item name="FriendID" type="int" />
+    </type>
+	
+	<type name="SC_FriendDestory_ACK">
+	  <!-- 删除好友  0失败  1成功-->
+	  <item name="isSuccess" type="int" />
+    </type>
+	
+	<type name="CS_FriendFind_REQ">
+	  <!-- 查找好友-->
+	  <item name="FriendID" type="int" />
+    </type>
+	
+	<type name="SC_FriendFind_ACK">
+	  <!-- 查找好友 -->
+	  <item name="isSuccess" type="int" />
+    </type>
+	
+  </types>
+  <messages>
+    <message name="CSID_LOGIN_REQ"  id="1" type="CS_LOGIN_REQ"/>
+    <message name="SCID_LOGIN_ACK"  id="2" type="SC_LOGIN_ACK"/>
+    <message name="CSID_CREATE_REQ"  id="3" type="CS_CREATE_REQ"/>
+    <message name="SCID_CREATE_ACK"  id="4" type="SC_CREATE_ACK"/>
+
+    <message name="CSID_GETINFO_REQ"  id="5" type="CS_GETINFO_REQ"/>
+    <message name="SCID_GETINFO_ACK"  id="6" type="SC_GETINFO_ACK"/>
+
+    <message name="CSID_REGISTER_REQ" id="7" type="CS_REGISTER_REQ"/>
+    <message name="SCID_REGISTER_ACK" id="8" type="SC_REGISTER_ACK"/>
+
+    <message name="CSID_UPGRADELEVEL_REQ"  id="100" type="CS_UPGRADELEVEL_REQ"/>
+    <message name="SCID_UPGRADELEVEL_ACK"  id="101" type="SC_UPGRADELEVEL_ACK"/>
+
+    <message name="CSID_UPGRADESTAR_REQ"  id="102" type="CS_UPGRADESTAR_REQ"/>
+    <message name="SCID_UPGRADESTAR_ACK"  id="103" type="SC_UPGRADESTAR_ACK"/>
+
+    <message name="CSID_LOOTLOGINREWARD_REQ" id="104" type="CS_LOOTLOGINREWARD_REQ" />
+    <message name="SCID_LOOTLOGINREWARD_ACK" id="105" type="SC_LOOTLOGINREWARD_ACK" />
+
+    <message name="CSID_PVE_REQ" id="200" type="CS_PVE_REQ" />
+    <message name="SCID_PVE_ACK" id="201" type="SC_PVE_ACK" />
+
+    <message name="CSID_SELLCARDS_REQ" id="202" type="CS_SELLCARDS_REQ" />
+    <message name="SCID_SELLCARDS_ACK" id="203" type="SC_SELLCARDS_ACK" />
+
+    <message name="CSID_POSITIONCHANGE_REQ" id="204" type="CS_POSITIONCHANGE_REQ" />
+    <message name="SCID_POSITIONCHANGE_ACK" id="205" type="SC_POSITIONCHANGE_ACK" />
+
+    <message name="CSID_UPGRADEEQUIPLEVEL_REQ" id="206" type="CS_UPGRADEEQUIPLEVEL_REQ" />
+    <message name="SCID_UPGRADEEQUIPLEVEL_ACK" id="207" type="SC_UPGRADEEQUIPLEVEL_ACK" />
+
+    <message name="CSID_EQUIPWORD_REQ" id="208" type="CS_EQUIPWORD_REQ" />
+    <message name="SCID_EQUIPWORD_ACK" id="209" type="SC_EQUIPWORD_ACK" />
+
+    <message name="CSID_EQUIPREST_REQ" id="210" type="CS_EQUIPREST_REQ" />
+    <message name="SCID_EQUIPREST_ACK" id="211" type="SC_EQUIPREST_ACK" />
+
+    <message name="CSID_SELLEQUIPS_REQ" id="212" type="CS_SELLEQUIPS_REQ" />
+    <message name="SCID_SELLEQUIPS_ACK" id="213" type="SC_SELLEQUIPS_ACK" />
+
+    <message name="CSID_SUMMON_REQ" id="214" type="CS_SUMMON_REQ" />
+    <message name="SCID_SUMMON_ACK" id="215" type="SC_SUMMON_ACK" />
+
+    <message name="CSID_GETDIRTYTIME_REQ" id="300" type="CS_GETDIRTYTIME_REQ" />
+    <message name="SCID_GETDIRTYTIME_ACK" id="301" type="SC_GETDIRTYTIME_ACK" />
+
+    <message name="CSID_APPLYGAME_REQ" id="400" type="CS_APPLYGAME_REQ" />
+    <message name="SCID_APPLYGAME_ACK" id="401" type="SC_APPLYGAME_ACK" />
+
+	 <!-- 球员信息-->
+    <message name="CSID_FootballerInfo_REQ" id="500" type="CS_FootballerInfo_REQ" />
+    <message name="SCID_FootballerInfo_ACK" id="501" type="SC_FootballerInfo_ACK" />
+	<message name="CSID_FootballerADD_REQ" id="502" type="CS_FootballerADD_REQ" />
+    <message name="SCID_FootballerADD_ACK" id="503" type="SC_FootballerADD_ACK" />
+	<message name="CSID_FootballerDestory_REQ" id="504" type="CS_FootballerDestory_REQ" />
+    <message name="SCID_FootballerDestory_ACK" id="505" type="SC_FootballerDestory_ACK" />
+
+
+	<!-- 主界面请求-->
+	<message name="CSID_Property_REQ" id="600" type="CS_Property_REQ" />
+    <message name="SCID_Property_ACK" id="601" type="SC_Property_ACK" />
+	<!-- 聊天---->
+	<message name="CSID_Chat_REQ" id="700" type="CS_Chat_REQ" />
+    <message name="SCID_Chat_ACK" id="701" type="SC_Chat_ACK" />
+	<message name="CSID_ChatSetInfo_REQ" id="702" type="CS_ChatSetInfo_REQ" />
+    <message name="SCID_ChatSetInfo_ACK" id="703" type="SC_ChatSetInfo_ACK" />
+	<!-- 好友 -->
+	<message name="CSID_Friend_REQ" id="800" type="CS_Friend_REQ" />
+    <message name="SCID_Friend_ACK" id="801" type="SC_Friend_ACK" />
+	<message name="CSID_FriendADD_REQ" id="802" type="CS_FriendADD_REQ" />
+    <message name="SCID_FriendADD_ACK" id="803" type="SC_FriendADD_ACK" />
+	<message name="CSID_FriendDestory_REQ" id="804" type="CS_FriendDestory_REQ" />
+    <message name="SCID_FriendDestory_ACK" id="805" type="SC_FriendDestory_ACK" />
+	<message name="CSID_FriendFind_REQ" id="806" type="CS_FriendFind_REQ" />
+    <message name="SCID_FriendFind_ACK" id="807" type="SC_FriendFind_ACK" />
+	
+    <message name="CSID_TESTPVE_REQ" id="1000" type="CS_TESTPVE_REQ" />
+    <message name="SCID_TESTPVE_ACK" id="1001" type="SC_TESTPVE_ACK" />
+
+    <message name="SCID_USER_DATA_NTF" id="1009" type="SC_USER_DATA_NTF" />
+    <message name="CSID_HeartBeat_REQ" id="9999" type="CS_HeartBeat_REQ" />//心跳
+  </messages>
+</coder>

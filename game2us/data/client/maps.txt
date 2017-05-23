@@ -1,0 +1,13 @@
+{"maps":
+	[
+		{
+			"id":1,
+			"type":1,
+			"begintime":"",
+			"endtime":"",
+			"firstchildmap":1,
+			"newmapid":2,
+			"level":20
+		},
+	]
+}

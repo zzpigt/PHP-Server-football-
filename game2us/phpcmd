@@ -1,0 +1,62 @@
+#! /bin/bash
+#
+# chkconfig:    - 90 25  
+#
+### BEGIN INIT INFO
+# Provides:          phpcmd
+# Required-Start:    $syslog
+# Required-Stop:     $syslog
+# Should-Start:        $local_fs
+# Should-Stop:        $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+### END INIT INFO
+
+prog="phpcmd"
+
+start () {
+    echo -n $"Starting $prog: "
+    /usr/local/php/bin/php -f phpcmd.php & 
+    if [ "$?" != 0 ] ; then
+        echo " failed"
+        exit 1
+    else
+        touch /var/lock/subsys/{$prog}
+        echo " done"
+    fi
+}
+stop () {
+    echo -n $"Stopping $prog: "
+    kill -9 `ps aux | grep "phpcmd" | awk '{print $2}'`
+    if [ "$?" != 0 ] ; then
+        echo " failed"
+        exit 1
+    else
+        echo " done"
+    fi
+}
+
+restart () {
+    $0 stop
+    sleep 2
+    $0 start
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart|reload)
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit $?

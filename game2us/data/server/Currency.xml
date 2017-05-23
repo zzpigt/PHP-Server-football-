@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <5000001> 
+        <Key>Name_Currency_Diamond</Key> 
+        <PicID>Diamond</PicID> 
+        <LowerLimit>0.0</LowerLimit> 
+        <UpperLimit>999999999</UpperLimit> 
+    </5000001> 
+    <5000002> 
+        <Key>Name_Currency_Cash</Key> 
+        <PicID>Cash</PicID> 
+        <LowerLimit>-1000000000</LowerLimit> 
+        <UpperLimit>999999999999</UpperLimit> 
+    </5000002> 
+    <5000003> 
+        <Key>Name_Currency_Cure</Key> 
+        <PicID>Cure</PicID> 
+        <LowerLimit>0.0</LowerLimit> 
+        <UpperLimit>10000000</UpperLimit> 
+    </5000003> 
+    <5000004> 
+        <Key>Name_Currency_Morale</Key> 
+        <PicID>Morale</PicID> 
+        <LowerLimit>0.0</LowerLimit> 
+        <UpperLimit>10000000</UpperLimit> 
+    </5000004> 
+    <5000005> 
+        <Key>Name_Currency_Rest</Key> 
+        <PicID>Rest</PicID> 
+        <LowerLimit>0.0</LowerLimit> 
+        <UpperLimit>10000000</UpperLimit> 
+    </5000005> 
+    <5000006> 
+        <Key>Name_Currency_Skill</Key> 
+        <PicID>Skill</PicID> 
+        <LowerLimit>0.0</LowerLimit> 
+        <UpperLimit>10000000</UpperLimit> 
+    </5000006> 
+</root>

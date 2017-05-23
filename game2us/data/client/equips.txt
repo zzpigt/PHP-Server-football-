@@ -1,0 +1,12 @@
+{"equips":
+	[
+		{
+			"id":1,
+			"quality":1,
+			"position":1,
+			"joblimit":1,
+			"name":"申城徽章",
+			"icon":""
+		},
+	]
+}

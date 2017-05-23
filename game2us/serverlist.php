@@ -1,0 +1,17 @@
+<?php
+	$serverlist = <<< EOF
+	{
+		[
+			{
+				'name':'1Çø',
+				'serverip':'222.186.12.171'
+			},
+			{
+				'name':'2Çø',
+				'serverip':'222.186.12.171'
+			}
+		]
+	}
+EOF;
+
+	echo $serverlist;

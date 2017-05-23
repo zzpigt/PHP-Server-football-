@@ -1,0 +1,16 @@
+{"summon":
+	[
+		{
+			"type":1,
+			"consumenum":10
+		},
+		{
+			"type":2,
+			"consumenum":10
+		},
+		{
+			"type":3,
+			"consumenum":10
+		},
+	]
+}

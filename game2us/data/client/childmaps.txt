@@ -1,0 +1,18 @@
+{"childmaps":
+	[
+		{
+			"id":1,
+			"type":0,
+			"power":12,
+			"limit":0,
+			"newchildmapid":2,
+			"elitemapid":"",
+			"elitechildmapid":"",
+			"formation1":"1,1,1|2,1,1",
+			"formation2":"3,1,1|4,,1,1",
+			"formation3":"5,1,1|6,1,1",
+			"formation4":"7,1,1",
+			"formation5":"8,1,1|9,1,1|10,1,1|11,1,1"
+		},
+	]
+}

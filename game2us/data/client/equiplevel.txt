@@ -1,0 +1,15 @@
+{"equiplevel":
+	[
+		{
+			"id":1001,
+			"exp":10000,
+			"money":10000,
+			"attack":50,
+			"organization":50,
+			"defence":50,
+			"physical":50,
+			"maxState":10,
+			"minState":9
+		},
+	]
+}
